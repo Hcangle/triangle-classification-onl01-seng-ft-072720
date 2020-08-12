@@ -1,50 +1,29 @@
 class Triangle
-  attr_accessor :side1, :side2, :side3
-  @sides = []
+  attr_reader :a, :b, :c	  
+  def initialize(a, b, c)	
+    @a = a	
+    @b = b	
+    @c = c	
+  end	
 
-  def initialize(side1, side2, side3)
-    @side1, @side2, @side3 = side1, side2, side3
-    @sides = [side1, side2, side3]
+  def kind	
+    validate_triangle	
+    if a == b && b == c	
+      :equilateral	
+    elsif a == b || b == c || a == c	
+      :isosceles	
+    else	
+      :scalene	
+    end	
+  end	
+
+  def validate_triangle	
+    real_triangle = [(a + b > c), (a + c > b), (b + c > a)]	
+    [a, b, c].each { |s| real_triangle << false if s <= 0 }	
+    raise TriangleError if real_triangle.include?(false)	
+  end	
+
+  class TriangleError < StandardError	
   end
-
-  def kind
-    if(negative? == true || valid? == false)
-      raise TriangleError
-    elsif(equilateral?)
-      :equilateral
-    elsif(scalene?)
-      :scalene
-    elsif(isosceles?)
-      :isosceles
-    end
-  end
-
-  def negative?
-    @sides.each do |length|
-      if(length <= 0)
-        return true
-      end
-    end
-  end
-
-  def equilateral?
-    (@side1 == @side2) && (@side1 == @side3)
-  end
-
-  def scalene?
-    (@side1 != @side2) && (@side1!= @side3) && (@side2 != @side3)
-  end
-
-  def isosceles?
-    (@side2 == @side3) || (@side1 == @side2) || (@side1 = @side3)
-  end
-
-  def valid?
-    (@side1 + @side2 > @side3) && (@side2 + @side3 > @side1) && (@side1 + @side3 > @side2)
-  end
-
-end
-
-class TriangleError < StandardError
 
 end
