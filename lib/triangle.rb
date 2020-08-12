@@ -7,8 +7,8 @@ class Triangle
     @scalene = scalene
   end 
   
-  class TriangleError < StandardError
-    def kind 
-      "triangle kind is invalid."
-  end
+  #class TriangleError < StandardError
+  #  def kind 
+   #   "triangle kind is invalid."
+  #end
 end
