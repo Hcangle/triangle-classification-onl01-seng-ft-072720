@@ -6,4 +6,9 @@ class Triangle
     @isosceles = isosceles
     @scalene = scalene
   end 
+  
+  class TriangleError < StandardError
+    def kind 
+      "triangle is invalid. "
+  end
 end
