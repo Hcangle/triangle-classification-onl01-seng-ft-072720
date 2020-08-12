@@ -9,6 +9,6 @@ class Triangle
   
   class TriangleError < StandardError
     def kind 
-      "triangle is invalid. "
+      "triangle kind is invalid."
   end
 end
