@@ -7,8 +7,12 @@ class Triangle
     @scalene = scalene
   end 
   
+  def kind 
+    @equilateral
+    
+    
   #class TriangleError < StandardError
-  #  def kind 
+  #  def message
    #   "triangle kind is invalid."
   #end
 end
